@@ -15,7 +15,7 @@
   version "0.0.20"
   resolved "http://registry.npm.taobao.org/@angular-devkit/core/download/@angular-devkit/core-0.0.20.tgz#2ad36dd210fccd0e156d01c6499082ad4cd8c2af"
   dependencies:
-    source-map "^0.5.6"
+    source-map l"^0.5.6"
 
 "@angular-devkit/schematics@~0.0.34":
   version "0.0.36"
