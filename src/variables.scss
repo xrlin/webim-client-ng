@@ -1,0 +1,8 @@
+$title-background-color: #6692ff;
+$title-color: white;
+
+@mixin better-center-box() {
+  top: calc(50% - 36px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,17 @@
+<div class="mat-elevation-z2 login">
+  <header>
+    <span class="mat-h2">Login</span>
+  </header>
+  <mat-form-field>
+    <input matInput placeholder="Enter your user name" [formControl]="userName" required>
+    <mat-error *ngIf="userName.invalid">{{getUserNameErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Enter your password" [formControl]="password" [type]="'password'" required>
+  </mat-form-field>
+  <div class="btn-wrapper">
+    <button mat-button (click)="submit()" [disabled]="loading">
+      <span class="mat-body-2">login</span>
+    </button>
+  </div>
+</div>
