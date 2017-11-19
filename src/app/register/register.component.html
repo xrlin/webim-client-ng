@@ -1,6 +1,6 @@
 <div class="mat-elevation-z2 login">
   <header>
-    <span class="mat-h2">Login</span>
+    <span class="mat-h2">Register</span>
   </header>
   <mat-form-field>
     <input matInput placeholder="Enter your user name" [formControl]="userName" required>
@@ -12,10 +12,10 @@
   </mat-form-field>
   <div class="btn-wrapper">
     <button mat-button (click)="submit()" [disabled]="loading">
-      <span class="mat-body-2">login</span>
+      <span class="mat-body-2">register</span>
     </button>
   </div>
   <div class="small-link">
-    <a routerLink="/register">还没有账号？</a>
+    <a routerLink="/login">登录</a>
   </div>
 </div>

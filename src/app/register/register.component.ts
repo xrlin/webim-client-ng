@@ -1,20 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {MatSnackBar} from '@angular/material';
-import {TokenService} from '../core/token.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
+import {RegisterService} from './register.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+  providers: [RegisterService]
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   userName = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
   loading = false;
 
-  constructor(private router: Router, private snackBar: MatSnackBar, private tokenService: TokenService) {
+  constructor(private router: Router, private snackBar: MatSnackBar, private registerService: RegisterService) {
   }
 
   ngOnInit() {
@@ -26,13 +27,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.tokenService.auth(this.userName.value, this.password.value).subscribe(
+    this.registerService.register(this.userName.value, this.password.value).subscribe(
       () => {
         this.loading = false;
-        this.router.navigate(['']);
+        this.router.navigate(['/login']);
       },
       () => {
-        this.showErrorSnackBar('登录失败, 请稍后重试');
+        this.showErrorSnackBar('注册失败, 请稍后重试');
         this.loading = false;
       }
     );
