@@ -1,0 +1,29 @@
+<div class="widget-wrapper">
+  <div class="menu-widget">
+    <div class="avatar">
+      <app-user-avatar [user]="user" class="pointer"></app-user-avatar>
+      <span class="nickname">{{user.name}}</span>
+    </div>
+    <div class="menu-item pointer" [class.selected]="currentMenu == Menu.messages" (click)="selectMenu(Menu.messages)">
+      <mat-icon [svgIcon]="'message-processing'" class="icon"></mat-icon>
+      Messages
+    </div>
+    <div class="menu-item pointer" [class.selected]="currentMenu == Menu.contacts" (click)="selectMenu(Menu.contacts)">
+      <mat-icon [svgIcon]="'account-box'" class="icon"></mat-icon>
+      Contacts
+    </div>
+    <div class="menu-item pointer" [class.selected]="currentMenu == Menu.groups" (click)="selectMenu(Menu.groups)">
+      <mat-icon [svgIcon]="'account-multiple'" class="icon"></mat-icon>
+      Groups
+    </div>
+    <div class="menu-item pointer" [class.selected]="currentMenu == Menu.reminder" (click)="selectMenu(Menu.reminder)">
+      <mat-icon [svgIcon]="'bell'" class="icon"></mat-icon>
+      Reminder
+    </div>
+  </div>
+  <div class="menu-content scrollbar-wrapper" perfectScrollbar="">
+    <div class="content pointer" *ngFor="let u of users">
+      sdfsddfsdffd
+    </div>
+  </div>
+</div>

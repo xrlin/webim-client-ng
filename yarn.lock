@@ -2856,6 +2856,10 @@ is-regex@^1.0.4:
   dependencies:
     has "^1.0.1"
 
+is-retina@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/is-retina/download/is-retina-1.0.3.tgz#d7401b286bea2ae37f62477588de504d0b8647e3"
+
 is-stream@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/is-stream/download/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
@@ -3588,6 +3592,20 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "http://registry.npm.taobao.org/negotiator/download/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ngx-avatar@^2.8.0:
+  version "2.8.0"
+  resolved "http://registry.npm.taobao.org/ngx-avatar/download/ngx-avatar-2.8.0.tgz#d0fd6705f3371fcad71fb106b090a197a50ea919"
+  dependencies:
+    is-retina "^1.0.3"
+    ts-md5 "^1.2.0"
+
+ngx-perfect-scrollbar@^5.0.2:
+  version "5.0.2"
+  resolved "http://registry.npm.taobao.org/ngx-perfect-scrollbar/download/ngx-perfect-scrollbar-5.0.2.tgz#837a6a7a661796d5829470e049bbdb7e30edea56"
+  dependencies:
+    perfect-scrollbar "^1.2.0"
+    resize-observer-polyfill "^1.4.0"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "http://registry.npm.taobao.org/no-case/download/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
@@ -4020,6 +4038,10 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+perfect-scrollbar@^1.2.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/perfect-scrollbar/download/perfect-scrollbar-1.2.0.tgz#ad23a2529c17f4535f21d1486f8bc3046e31a9d2"
 
 performance-now@^0.2.0:
   version "0.2.0"
@@ -4771,6 +4793,10 @@ requires-port@1.0.x, requires-port@1.x.x, requires-port@~1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+resize-observer-polyfill@^1.4.0:
+  version "1.5.0"
+  resolved "http://registry.npm.taobao.org/resize-observer-polyfill/download/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/resolve-cwd/download/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -5478,6 +5504,10 @@ trim-newlines@^1.0.0:
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/trim-right/download/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
+
+ts-md5@^1.2.0:
+  version "1.2.2"
+  resolved "http://registry.npm.taobao.org/ts-md5/download/ts-md5-1.2.2.tgz#d176bcb9daca485a0fd29e6092bd4f6d658cf727"
 
 ts-node@~3.2.0:
   version "3.2.2"

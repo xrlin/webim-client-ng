@@ -1,8 +1,9 @@
 $title-background-color: #6692ff;
 $title-color: white;
 
-@mixin better-center-box() {
-  top: calc(50% - 36px);
+@mixin better-center-box($adjust: '36px') {
+  position: absolute;
+  top: calc(50% - #{$adjust});
   left: 50%;
   transform: translate(-50%, -50%);
 }

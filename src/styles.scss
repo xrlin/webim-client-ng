@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
 
 html {
   width: 100%;
@@ -21,5 +22,14 @@ body {
   button.mat-simple-snackbar-action {
     color: white;
   }
+}
+
+.scrollbar-wrapper {
+  height: 100%;
+  position: relative;
+}
+
+.pointer {
+  cursor: pointer;
 }
 

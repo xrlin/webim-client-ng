@@ -1,0 +1,70 @@
+@import "~@angular/material/theming";
+@import "../../variables";
+
+.widget-wrapper {
+  @include better-center-box('0px');
+  display: flex;
+  width: 80%;
+  max-width: 1080px;
+  min-width: 768px;
+  height: 84%;
+  max-height: 768px;
+  min-height: 500px;
+  background-color: white;
+  @include mat-elevation(3)
+}
+
+.menu-widget {
+  z-index: 3;
+  background-color: $title-background-color;
+  height: 100%;
+  width: 10em;
+  box-shadow: 2em 0 5em -3em #333333;
+
+  .avatar {
+    padding: 1em 1em 2em 1em;
+  }
+
+  .nickname {
+    color: white;
+    font-size: 1em;
+    margin-left: 1em;
+  }
+}
+
+.menu-item {
+  display: flex;
+  color: white;
+  align-content: center;
+  padding: 1.5em 1em 1em;
+
+  .icon {
+    margin-right: .5em;
+  }
+  &:hover, &:active, &.selected {
+    background-color: #4977f0
+  }
+}
+
+.menu-content {
+  z-index: 2;
+  height: 100%;
+  width: 18em;
+  background-color: #f4f6fb;
+  box-shadow: 2em 0 5em -4em #333333;
+
+  .content {
+    box-sizing: border-box;
+    height: 8em;
+    width: 100%;
+    color: rgb(174, 170, 180);
+    padding: 2em 1.5em;
+    border-top: 1px solid rgb(226, 226, 228);
+    .title {
+      color: rgb(174, 177, 200);
+    }
+    &:hover, &:active {
+      background-color: rgb(255, 255, 255);
+    }
+  }
+}
