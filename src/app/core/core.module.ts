@@ -18,6 +18,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {TokenService} from './token.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {AvatarModule} from 'ngx-avatar';
+import {ContactsService} from './contacts.service';
+import {RoomsService} from './rooms.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -62,7 +64,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }],
+    },
+    ContactsService,
+    RoomsService],
   declarations: []
 })
 export class CoreModule {

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/publishReplay';
 import 'rxjs/add/observable/throw';
+import {ApiConfig} from '../config/api.config';
 
 interface TokenData {
   token: string;
@@ -12,9 +13,10 @@ interface TokenData {
 
 @Injectable()
 export class TokenService {
-  private authUrl = 'http://localhost:8080/api/user/token';
+  private authUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private api: ApiConfig) {
+    this.authUrl = api.getTokenApi();
   }
 
   private static set token(token: string) {

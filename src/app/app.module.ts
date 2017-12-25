@@ -10,6 +10,9 @@ import {RegisterComponent} from './register/register.component';
 import {ChatWindowComponent} from './chat-window/chat-window.component';
 import {UserAvatarComponent} from './shared/user-avatar/user-avatar.component';
 import {AvatarDetailDialogComponent} from './avatar-detail-dialog/avatar-detail-dialog.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './interceptor/auth.interceptor';
+import {ApiConfig} from './config/api.config';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -31,7 +34,15 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   entryComponents: [AvatarDetailDialogComponent],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {provide: 'endpoint', useValue: 'http://localhost:8080/api'},
+    ApiConfig
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
