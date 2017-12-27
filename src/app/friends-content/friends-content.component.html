@@ -1,0 +1,5 @@
+<div class="menu-content scrollbar-wrapper" perfectScrollbar="">
+  <div class="content pointer" *ngFor="let friend of friendsService.friends | async">
+    {{friend.name}}
+  </div>
+</div>

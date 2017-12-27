@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/publishReplay';
 import 'rxjs/add/observable/throw';
 import {ApiConfig} from '../config/api.config';
+import {Router} from '@angular/router';
 
 interface TokenData {
   token: string;
@@ -15,7 +16,7 @@ interface TokenData {
 export class TokenService {
   private authUrl: string;
 
-  constructor(private http: HttpClient, private api: ApiConfig) {
+  constructor(private http: HttpClient, private api: ApiConfig, private router: Router) {
     this.authUrl = api.getTokenApi();
   }
 
@@ -32,5 +33,10 @@ export class TokenService {
     return this.http.post<TokenData>(this.authUrl, data).map(
       (resp: TokenData) => TokenService.token = resp.token
     );
+  }
+
+  logout() {
+    TokenService.token = '';
+    this.router.navigate(['/login']);
   }
 }

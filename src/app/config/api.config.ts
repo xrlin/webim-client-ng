@@ -14,4 +14,8 @@ export class ApiConfig {
   getRoomsApi(): string {
     return `${this.endpoint}/user/rooms`;
   }
+
+  getFriendsApi(): string {
+    return `${this.endpoint}/friends`;
+  }
 }

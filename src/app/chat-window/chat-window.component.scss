@@ -45,26 +45,3 @@
     background-color: #4977f0
   }
 }
-
-.menu-content {
-  z-index: 2;
-  height: 100%;
-  width: 18em;
-  background-color: #f4f6fb;
-  box-shadow: 2em 0 5em -4em #333333;
-
-  .content {
-    box-sizing: border-box;
-    height: 8em;
-    width: 100%;
-    color: rgb(174, 170, 180);
-    padding: 2em 1.5em;
-    border-top: 1px solid rgb(226, 226, 228);
-    .title {
-      color: rgb(174, 177, 200);
-    }
-    &:hover, &:active {
-      background-color: rgb(255, 255, 255);
-    }
-  }
-}

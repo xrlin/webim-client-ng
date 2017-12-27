@@ -20,6 +20,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {AvatarModule} from 'ngx-avatar';
 import {ContactsService} from './contacts.service';
 import {RoomsService} from './rooms.service';
+import {FriendsService} from './friends.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -66,7 +67,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
     ContactsService,
-    RoomsService],
+    RoomsService,
+    FriendsService],
   declarations: []
 })
 export class CoreModule {

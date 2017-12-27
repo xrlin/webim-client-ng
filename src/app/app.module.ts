@@ -13,6 +13,10 @@ import {AvatarDetailDialogComponent} from './avatar-detail-dialog/avatar-detail-
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
 import {ApiConfig} from './config/api.config';
+import {MenuContentDirective} from './shared/menu-content.directive';
+import {RoomContentComponent} from './rooms-content/rooms-content.component';
+import {FriendsContentComponent} from './friends-content/friends-content.component';
+import {AlertDialogComponent} from './alert-dialog/alert-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -27,13 +31,17 @@ const appRoutes: Routes = [
     RegisterComponent,
     ChatWindowComponent,
     UserAvatarComponent,
-    AvatarDetailDialogComponent
+    AvatarDetailDialogComponent,
+    MenuContentDirective,
+    RoomContentComponent,
+    FriendsContentComponent,
+    AlertDialogComponent,
   ],
   imports: [
     BrowserModule, CoreModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
-  entryComponents: [AvatarDetailDialogComponent],
+  entryComponents: [AvatarDetailDialogComponent, RoomContentComponent, FriendsContentComponent, AlertDialogComponent],
   providers: [AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -20,10 +20,15 @@
       <mat-icon [svgIcon]="'bell'" class="icon"></mat-icon>
       Reminder
     </div>
-  </div>
-  <div class="menu-content scrollbar-wrapper" perfectScrollbar="">
-    <div class="content pointer" *ngFor="let room of rooms">
-      {{room.name}}
+
+    <div class="menu-item pointer" [class.selected]="currentMenu == Menu.setting" (click)="selectMenu(Menu.setting)">
+      <mat-icon [svgIcon]="'settings'" class="icon"></mat-icon>
+      Setting
+    </div>
+    <div class="menu-item pointer" [class.selected]="currentMenu == Menu.logout" (click)="openLogoutDialog()">
+      <mat-icon [svgIcon]="'logout'" class="icon"></mat-icon>
+      Logout
     </div>
   </div>
+  <ng-template appMenuContent></ng-template>
 </div>
