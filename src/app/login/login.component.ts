@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {MatSnackBar} from '@angular/material';
 import {TokenService} from '../core/token.service';
 import {Router} from '@angular/router';
+import {NotificationService} from '../core/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password = new FormControl('', [Validators.required]);
   loading = false;
 
-  constructor(private router: Router, private snackBar: MatSnackBar, private tokenService: TokenService) {
+  constructor(private router: Router, private notificationService: NotificationService, private tokenService: TokenService) {
   }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (!(this.userName.valid && this.password.valid)) {
-      this.showErrorSnackBar('用户名和密码不能为空');
+      this.notificationService.addNotification('用户名和密码不能为空', 'error');
       return;
     }
     this.loading = true;
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
       },
       () => {
-        this.showErrorSnackBar('登录失败, 请稍后重试');
+        this.notificationService.addNotification('登录失败, 请稍后重试', 'error');
         this.loading = false;
       }
     );
@@ -45,13 +45,4 @@ export class LoginComponent implements OnInit {
   getPasswordErrorMessage(): String {
     return this.password.hasError('required') ? 'You must enter a password' : '';
   }
-
-  private showErrorSnackBar(message: string) {
-    this.snackBar.open(
-      message,
-      '关闭',
-      {duration: 2000, verticalPosition: 'top', panelClass: 'snack-bar--error'}
-    );
-  }
-
 }

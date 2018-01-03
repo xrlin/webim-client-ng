@@ -1,0 +1,28 @@
+.setting-wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  cursor: pointer;
+}
+
+.user-info {
+  margin-top: 20px;
+}
+
+.password-form-wrapper {
+  height: 5em;
+  width: 80%;
+  max-width: 20em;
+}
+
+.toggle-button {
+  color: #6692ff;
+  margin-top: .5em;
+  font-weight: bold;
+}

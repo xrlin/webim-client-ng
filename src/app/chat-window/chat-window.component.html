@@ -1,8 +1,10 @@
 <div class="widget-wrapper">
   <div class="menu-widget">
     <div class="avatar">
-      <app-user-avatar [user]="user" class="pointer"></app-user-avatar>
-      <span class="nickname">{{user.name}}</span>
+      <app-user-avatar [user]="currentUser | async" class="pointer"></app-user-avatar>
+      <div class="nickname">
+        <span>{{(currentUser | async)?.name}}</span>
+      </div>
     </div>
     <div class="menu-item pointer" [class.selected]="currentMenu == Menu.messages" (click)="selectMenu(Menu.messages)">
       <mat-icon [svgIcon]="'message-processing'" class="icon"></mat-icon>
@@ -30,5 +32,7 @@
       Logout
     </div>
   </div>
-  <ng-template appMenuContent></ng-template>
+  <div class="menu-content-wrapper">
+    <ng-template appMenuContent></ng-template>
+  </div>
 </div>

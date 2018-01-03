@@ -1,0 +1,26 @@
+<div class="setting-wrapper">
+  <div class="avatar-wrapper">
+    <app-avatar-cropper #avatarCropper style="display: none"></app-avatar-cropper>
+    <a (click)="avatarCropper.selectFile()" style="display: block">
+      <ngx-avatar [name]="user?.name" [src]="user?.avatar" [bgColor]="'#6692ff'" [fgColor]="'white'" [textSizeRatio]="2"
+                  class="avatar" [size]="200"></ngx-avatar>
+    </a>
+  </div>
+  <div class="user-info">
+    <app-inline-edit [text]="user?.name" [saveCallbackFuc]="updateName"></app-inline-edit>
+  </div>
+  <a mat-button (click)="togglePasswordForm()" class="toggle-button">{{displayPasswordForm ? '收起密码表单' : '更改密码'}}</a>
+  <div class="password-form-wrapper">
+    <ng-container *ngIf="displayPasswordForm">
+      <form [formGroup]="passwordForm" novalidate (ngSubmit)="submitPassword()" (keydown.enter)="submitPassword()"
+            class="flex-form-wrapper">
+        <mat-form-field>
+          <input matInput formControlName="oldPassword" placeholder="Type in your current password">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="newPassword" placeholder="Type in your new password">
+        </mat-form-field>
+      </form>
+    </ng-container>
+  </div>
+</div>

@@ -190,6 +190,10 @@
   dependencies:
     "@angular-devkit/core" "0.0.20"
 
+"@types/cropperjs@^1.1.0":
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/@types/cropperjs/download/@types/cropperjs-1.1.0.tgz#a27754a00fdb58ec3b93f54acd151bd559a37a6a"
+
 "@types/jasmine@*":
   version "2.8.2"
   resolved "http://registry.npm.taobao.org/@types/jasmine/download/@types/jasmine-2.8.2.tgz#6ae4d8740c0da5d5a627df725b4eed71b8e36668"
@@ -1233,6 +1237,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     ripemd160 "^2.0.0"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+cropperjs@^1.2.1:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/cropperjs/download/cropperjs-1.2.1.tgz#c80c743d15cdddcb8c9c7756542312654da475e4"
 
 cross-spawn@^3.0.0:
   version "3.0.1"
@@ -3592,9 +3600,13 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "http://registry.npm.taobao.org/negotiator/download/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ngx-avatar@^2.8.0:
-  version "2.8.0"
-  resolved "http://registry.npm.taobao.org/ngx-avatar/download/ngx-avatar-2.8.0.tgz#d0fd6705f3371fcad71fb106b090a197a50ea919"
+ng-click-outside@^3.1.1:
+  version "3.1.1"
+  resolved "http://registry.npm.taobao.org/ng-click-outside/download/ng-click-outside-3.1.1.tgz#f0d56c2d730c173ac3ce38208c370d4ad9649b06"
+
+ngx-avatar@^2.9.0:
+  version "2.9.0"
+  resolved "http://registry.npm.taobao.org/ngx-avatar/download/ngx-avatar-2.9.0.tgz#7dbeea19c0ea1657040f52afefb1dfa3c661ff46"
   dependencies:
     is-retina "^1.0.3"
     ts-md5 "^1.2.0"

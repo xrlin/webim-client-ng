@@ -18,4 +18,28 @@ export class ApiConfig {
   getFriendsApi(): string {
     return `${this.endpoint}/friends`;
   }
+
+  getUserProfileApi(): string {
+    return `${this.endpoint}/user/info`;
+  }
+
+  updateUserProfileApi(): string {
+    return `${this.endpoint}/user/profile`;
+  }
+
+  updatePasswordApi(): string {
+    return `${this.endpoint}/user/password`;
+  }
+
+  getUploadTokenApi(): string {
+    return `${this.endpoint}/qiniu/uptoken`;
+  }
+
+  fileUploadApi(): string {
+    return `https://upload-z2.qiniup.com`;
+  }
+
+  updateAvatarApi(): string {
+    return `${this.endpoint}/user/avatar`;
+  }
 }

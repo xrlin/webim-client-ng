@@ -24,6 +24,13 @@ body {
   }
 }
 
+.snack-bar--success {
+  background-color: #59ff48;
+  button.mat-simple-snackbar-action {
+    color: white;
+  }
+}
+
 .scrollbar-wrapper {
   height: 100%;
   position: relative;
@@ -53,5 +60,13 @@ body {
     &:hover, &:active {
       background-color: rgb(255, 255, 255);
     }
+  }
+}
+
+.flex-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  & > * {
+    width: 100%;
   }
 }

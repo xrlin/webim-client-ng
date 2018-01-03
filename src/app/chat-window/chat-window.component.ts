@@ -7,6 +7,9 @@ import {FriendsContentComponent} from '../friends-content/friends-content.compon
 import {MatDialog} from '@angular/material';
 import {AlertDialogComponent, AlertDialogData} from '../alert-dialog/alert-dialog.component';
 import {TokenService} from '../core/token.service';
+import {SettingComponent} from '../setting/setting.component';
+import {UserService} from '../core/user.service';
+import {Observable} from 'rxjs/Observable';
 
 enum Menu {
   messages,
@@ -27,13 +30,17 @@ export class ChatWindowComponent implements AfterContentInit, OnInit {
   // Just make enum available in view.
   Menu = Menu;
   users: Array<User>;
-  user: User = new User({name: 'xrlin', avatar: ''});
+
   currentMenu: Menu = Menu.messages;
+
+  currentUser: Observable<User>;
 
   constructor(private contactsService: ContactsService,
               private componentFactoryResolver: ComponentFactoryResolver,
               private tokenService: TokenService,
+              private userService: UserService,
               private dialog: MatDialog) {
+    this.currentUser = this.userService.currentUser;
 
   }
 
@@ -61,6 +68,7 @@ export class ChatWindowComponent implements AfterContentInit, OnInit {
     const maps = new Map();
     maps.set(Menu.groups, RoomContentComponent);
     maps.set(Menu.contacts, FriendsContentComponent);
+    maps.set(Menu.setting, SettingComponent);
     return maps.get(this.currentMenu);
   }
 

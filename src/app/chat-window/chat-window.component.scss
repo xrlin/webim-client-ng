@@ -45,3 +45,23 @@
     background-color: #4977f0
   }
 }
+
+.menu-content-wrapper {
+  flex: 1;
+}
+
+.avatar {
+  display: flex;
+  app-user-avatar {
+
+  }
+  .nickname {
+    display: table;
+    height: 50px;
+    > span {
+      display: table-cell;
+      vertical-align: middle;
+      text-overflow: ellipsis;
+    }
+  }
+}

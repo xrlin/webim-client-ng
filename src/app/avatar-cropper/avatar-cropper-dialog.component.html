@@ -1,0 +1,12 @@
+<div class="croppe-dialog">
+  <h1 mat-dialog-title="">头像编辑</h1>
+  <div mat-dialog-content>
+    <div class="cropper-img-container">
+      <img src="https://xrlin.github.io/assets/img/background.jpg" id="avatar-cropper-source">
+    </div>
+  </div>
+  <div class="footer">
+    <button (click)="upload()" [disabled]="uploading">Submit</button>
+    <button mat-dialog-close [disabled]="uploading">Close</button>
+  </div>
+</div>

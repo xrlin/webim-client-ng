@@ -1,0 +1,6 @@
+<div class="inline-edit-wrapper" (clickOutside)="closeEdit()">
+  <span *ngIf="!opened" (click)="openEdit($event)">{{text}}</span>
+  <ng-container *ngIf="opened">
+    <input matInput [ngModel]="text" (keyup.enter)="save()" [formControl]="newInput" title="" autocomplete="off">
+  </ng-container>
+</div>

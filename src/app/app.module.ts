@@ -17,6 +17,9 @@ import {MenuContentDirective} from './shared/menu-content.directive';
 import {RoomContentComponent} from './rooms-content/rooms-content.component';
 import {FriendsContentComponent} from './friends-content/friends-content.component';
 import {AlertDialogComponent} from './alert-dialog/alert-dialog.component';
+import {SettingComponent} from './setting/setting.component';
+import {InlineEditComponent} from './inline-edit/inline-edit.component';
+import {AvatarCropperComponent, AvatarCropperDialogComponent} from './avatar-cropper/avatar-cropper.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -36,12 +39,23 @@ const appRoutes: Routes = [
     RoomContentComponent,
     FriendsContentComponent,
     AlertDialogComponent,
+    SettingComponent,
+    InlineEditComponent,
+    AvatarCropperComponent,
+    AvatarCropperDialogComponent
   ],
   imports: [
     BrowserModule, CoreModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
-  entryComponents: [AvatarDetailDialogComponent, RoomContentComponent, FriendsContentComponent, AlertDialogComponent],
+  entryComponents: [
+    AvatarDetailDialogComponent,
+    RoomContentComponent,
+    FriendsContentComponent,
+    AlertDialogComponent,
+    SettingComponent,
+    AvatarCropperDialogComponent
+  ],
   providers: [AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
@@ -49,7 +63,7 @@ const appRoutes: Routes = [
       multi: true,
     },
     {provide: 'endpoint', useValue: 'http://localhost:8080/api'},
-    ApiConfig
+    ApiConfig,
   ],
   bootstrap: [AppComponent]
 })

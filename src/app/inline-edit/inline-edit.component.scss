@@ -1,0 +1,20 @@
+.inline-edit-wrapper {
+  margin: .2em .5em;
+  color: rgba(0, 0, 0, .7);
+  font-size: xx-large;
+  font-weight: bold;
+  text-align: center;
+  input {
+    font: inherit;
+    background: 0 0;
+    color: #333333;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: center;
+  }
+}
