@@ -42,4 +42,16 @@ export class ApiConfig {
   updateAvatarApi(): string {
     return `${this.endpoint}/user/avatar`;
   }
+
+  addFriendApi(): string {
+    return `${this.endpoint}/friends`;
+  }
+
+  deleteFriendApi(friendID: number | string): string {
+    return `${this.endpoint}/friend/${friendID}`;
+  }
+
+  searchUsersApi(): string {
+    return `${this.endpoint}/users/search`;
+  }
 }

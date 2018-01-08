@@ -20,6 +20,7 @@ import {AlertDialogComponent} from './alert-dialog/alert-dialog.component';
 import {SettingComponent} from './setting/setting.component';
 import {InlineEditComponent} from './inline-edit/inline-edit.component';
 import {AvatarCropperComponent, AvatarCropperDialogComponent} from './avatar-cropper/avatar-cropper.component';
+import {SearchBoxComponent} from './search-box/search-box.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     SettingComponent,
     InlineEditComponent,
     AvatarCropperComponent,
-    AvatarCropperDialogComponent
+    AvatarCropperDialogComponent,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule, CoreModule,

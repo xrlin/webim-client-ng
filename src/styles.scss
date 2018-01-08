@@ -41,6 +41,7 @@ body {
 }
 
 .menu-content {
+  display: inline-block;
   z-index: 2;
   height: 100%;
   width: 18em;
@@ -52,12 +53,12 @@ body {
     height: 8em;
     width: 100%;
     color: rgb(174, 170, 180);
-    padding: 2em 1.5em;
+    padding: 1em .5em;
     border-top: 1px solid rgb(226, 226, 228);
     .title {
       color: rgb(174, 177, 200);
     }
-    &:hover, &:active {
+    &.active, &:hover, &:active {
       background-color: rgb(255, 255, 255);
     }
   }

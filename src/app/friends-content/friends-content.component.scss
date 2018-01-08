@@ -1,0 +1,30 @@
+.menu-content {
+  .item-detail {
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: .5em;
+    display: inline-block;
+  }
+  .name {
+    font-weight: bold;
+    font-size: large;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.detail-panel {
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -6,8 +6,6 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {ApiConfig} from '../config/api.config';
 import {FileUploadService} from './fileupload.service';
 
-type updateOperation = (user: User) => User;
-
 @Injectable()
 export class UserService {
   currentUser: Observable<User>;
@@ -48,5 +46,9 @@ export class UserService {
       .concatMap((resp: { hash: string, key: string }) => {
         return this.http.put(this.api.updateAvatarApi(), {avatar: resp.hash});
       });
+  }
+
+  search(value: string): Observable<User[]> {
+    return this.http.get<{ users: User[] }>(this.api.searchUsersApi(), {params: {name: value}}).map((resp) => resp.users);
   }
 }
