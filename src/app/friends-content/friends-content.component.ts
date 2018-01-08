@@ -4,6 +4,8 @@ import {User} from '../models/user.model';
 import * as _ from 'lodash';
 import {UserService} from '../core/user.service';
 import {Subscription} from 'rxjs/Subscription';
+import {MatDialog} from '@angular/material';
+import {AlertDialogComponent} from '../alert-dialog/alert-dialog.component';
 
 @Component({
   selector: 'app-friends-content',
@@ -24,7 +26,7 @@ export class FriendsContentComponent implements OnInit, OnDestroy {
 
   subscriptions = new Subscription();
 
-  constructor(private friendsService: FriendsService, private userService: UserService) {
+  constructor(private friendsService: FriendsService, private userService: UserService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -57,6 +59,15 @@ export class FriendsContentComponent implements OnInit, OnDestroy {
 
   addFriend(userID: number) {
     this.friendsService.addFriend(userID).subscribe();
+  }
+
+  showDeleteConfirmDialog() {
+    const dialogRef = this.dialog.open(AlertDialogComponent, {data: {message: 'Are you sure want to delete this friend ?'}});
+    dialogRef.afterClosed().subscribe((confirm) => {
+      if (confirm === 'true') {
+        this.deleteFriend(this.currentFriend.id);
+      }
+    });
   }
 
   deleteFriend(friendID: number) {

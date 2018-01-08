@@ -45,7 +45,7 @@
       <span>{{currentFriend.name}}</span>
       <div class="operations">
         <button mat-button *ngIf="hasFriendship(currentFriend)">发起聊天</button>
-        <button mat-button *ngIf="hasFriendship(currentFriend)" (click)="deleteFriend(currentFriend.id)">删除好友</button>
+        <button mat-button *ngIf="hasFriendship(currentFriend)" (click)="showDeleteConfirmDialog()">删除好友</button>
         <button mat-button *ngIf="!hasFriendship(currentFriend)" (click)="addFriend(currentFriend.id)">添加好友</button>
       </div>
     </ng-container>
