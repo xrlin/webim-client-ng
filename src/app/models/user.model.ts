@@ -6,6 +6,6 @@ export class User {
   constructor(obj?: any) {
     this.id = obj && obj.id;
     this.name = obj && obj.name;
-    this.avatar = obj && obj.avatarURL;
+    this.avatar = obj && obj.avatar;
   }
 }

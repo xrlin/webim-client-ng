@@ -36,7 +36,7 @@ export class FriendsContentComponent implements OnInit, OnDestroy {
   }
 
   hasCurrentFriend(): boolean {
-    return this.currentFriend && this.currentFriend.id !== 0;
+    return this.currentFriend.id && this.currentFriend.id !== 0;
   }
 
   setCurrentFriend(friend: User) {
