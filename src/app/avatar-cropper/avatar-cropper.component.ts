@@ -1,8 +1,6 @@
-import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {AfterViewInit, Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import * as Cropper from 'cropperjs';
-import {UserService} from '../core/user.service';
-import {NotificationService} from '../core/notification.service';
 
 interface CropperSourceData {
   blobUrl: string;
@@ -16,13 +14,19 @@ interface CropperSourceData {
 export class AvatarCropperComponent implements OnInit, AfterViewInit {
 
   input: HTMLInputElement;
+  @Output() afterCropped = new EventEmitter<Blob>();
 
   constructor(private dialog: MatDialog) {
   }
 
   openDialog(data: CropperSourceData) {
     const dialogRef = this.dialog.open(AvatarCropperDialogComponent, {data});
-    dialogRef.afterClosed().subscribe(() => this.input.value = '');
+    dialogRef.afterClosed().subscribe((confirm) => {
+      if (confirm) {
+        const croppedData = dialogRef.componentInstance.croppedData;
+        this.afterCropped.emit(croppedData);
+      }
+    });
   }
 
   ngOnInit() {
@@ -60,12 +64,9 @@ export class AvatarCropperComponent implements OnInit, AfterViewInit {
 export class AvatarCropperDialogComponent implements OnInit {
   cropper: Cropper;
 
-  uploading = false;
+  croppedData: Blob;
 
-  constructor(public dialogRef: MatDialogRef<AvatarCropperDialogComponent>,
-              private userService: UserService,
-              private notificationService: NotificationService,
-              @Inject(MAT_DIALOG_DATA) public data?: CropperSourceData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data?: CropperSourceData) {
   }
 
   ngOnInit() {
@@ -76,19 +77,9 @@ export class AvatarCropperDialogComponent implements OnInit {
     this.cropper = new Cropper(image, {});
   }
 
-  upload() {
+  cropped() {
     this.cropper.getCroppedCanvas().toBlob((blob: Blob) => {
-      this.uploading = true;
-      this.userService.updateAvatar(blob).subscribe(
-        () => {
-          this.dialogRef.close();
-          this.uploading = false;
-          this.userService.retrieveProfile();
-        },
-        () => {
-          this.notificationService.addNotification('上传头像失败', 'error');
-          this.uploading = false;
-        });
+      this.croppedData = blob;
     });
   }
 

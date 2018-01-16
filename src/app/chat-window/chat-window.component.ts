@@ -1,7 +1,7 @@
 import {AfterContentInit, Component, ComponentFactoryResolver, OnInit, Type, ViewChild} from '@angular/core';
 import {User} from '../models/user.model';
 import {ContactsService} from '../core/contacts.service';
-import {RoomContentComponent} from '../rooms-content/rooms-content.component';
+import {GroupsContentComponent} from '../groups-content/groups-content.component';
 import {MenuContentDirective} from '../shared/menu-content.directive';
 import {FriendsContentComponent} from '../friends-content/friends-content.component';
 import {MatDialog} from '@angular/material';
@@ -66,7 +66,7 @@ export class ChatWindowComponent implements AfterContentInit, OnInit {
   // return the corresponding component of selected menu
   getComponent(): Type<any> {
     const maps = new Map();
-    maps.set(Menu.groups, RoomContentComponent);
+    maps.set(Menu.groups, GroupsContentComponent);
     maps.set(Menu.contacts, FriendsContentComponent);
     maps.set(Menu.setting, SettingComponent);
     return maps.get(this.currentMenu);

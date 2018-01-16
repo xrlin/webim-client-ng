@@ -11,8 +11,36 @@ export class ApiConfig {
     return `${this.endpoint}/user/token`;
   }
 
-  getRoomsApi(): string {
+  getGroupsApi(): string {
     return `${this.endpoint}/user/rooms`;
+  }
+
+  joinGroupApi(groupID: number): string {
+    return `${this.endpoint}/room/${groupID}/join`;
+  }
+
+  leaveGroupApi(groupID: number): string {
+    return `${this.endpoint}/room/${groupID}/leave`;
+  }
+
+  createGroupApi(): string {
+    return `${this.endpoint}/rooms`;
+  }
+
+  searchGroupApi(): string {
+    return `${this.endpoint}/rooms/search`;
+  }
+
+  updateGroupApi(roomID: string | number): string {
+    return `${this.endpoint}/room/${roomID}`;
+  }
+
+  groupProfileApi(roomID: number): string {
+    return `${this.endpoint}/rooms/${roomID}`;
+  }
+
+  groupInviteApi(roomID: number): string {
+    return `${this.endpoint}/room/${roomID}/invite`;
   }
 
   getFriendsApi(): string {

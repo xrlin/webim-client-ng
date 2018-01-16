@@ -17,11 +17,21 @@ export class SettingComponent implements OnInit {
   passwordForm: FormGroup;
 
   displayPasswordForm = false;
+
+  constructor(private userService: UserService, private notificationService: NotificationService, @Inject(FormBuilder) fb: FormBuilder) {
+    this.userService.currentUser.subscribe((u: User) => this.user = u);
+    this.passwordForm = fb.group({
+      oldPassword: ['', Validators.required],
+      newPassword: ['', Validators.required]
+    });
+  }
+
   updateName = (name: string) => {
     this.userService.updateUserName(name).subscribe({
       error: err => this.notificationService.addNotification('Update user name failed', 'error')
     });
   }
+
   updatePassword = ({oldPassword, newPassword}) => {
     this.userService.updatePassword(oldPassword, newPassword).subscribe({
       next: (resp: HttpResponse<{ message: string }>) => {
@@ -31,12 +41,14 @@ export class SettingComponent implements OnInit {
     });
   }
 
-  constructor(private userService: UserService, private notificationService: NotificationService, @Inject(FormBuilder) fb: FormBuilder) {
-    this.userService.currentUser.subscribe((u: User) => this.user = u);
-    this.passwordForm = fb.group({
-      oldPassword: ['', Validators.required],
-      newPassword: ['', Validators.required]
-    });
+  updateAvatar(blob: Blob) {
+    this.userService.updateAvatar(blob).subscribe(
+      () => {
+        this.userService.retrieveProfile();
+      },
+      () => {
+        this.notificationService.addNotification('上传头像失败', 'error');
+      });
   }
 
   ngOnInit() {

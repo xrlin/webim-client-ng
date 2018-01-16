@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="menu-content scrollbar-wrapper" perfectScrollbar>
+    <div class="search-box-wrapper">
+      <app-search-box (searchEvent)="filterGroups($event)"></app-search-box>
+    </div>
+    <ng-container *ngTemplateOutlet="itemList; context: { groups: groupList() }"></ng-container>
+    <ng-container *ngIf="onFilter()">
+      <a (click)="searchGroups()">查找更多...</a>
+      <ng-container *ngTemplateOutlet="itemList; context: { groups: moreGroups }"></ng-container>
+    </ng-container>
+  </div>
+  <section class="detail-panel">
+    <div class="plus-button">
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="openNewGroupDialog()">
+          <mat-icon [svgIcon]="'plus'" title="Create new group"></mat-icon>
+          Create new group
+        </button>
+        <button mat-menu-item (click)="openFriendSelectorDialog()" *ngIf="hasCurrentGroup()">
+          <mat-icon [svgIcon]="'plus'" title="Invite friends"></mat-icon>
+          Invite friends
+        </button>
+      </mat-menu>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+    <ng-container *ngIf="hasCurrentGroup()">
+      <div class="avatar-wrapper">
+        <app-avatar-cropper #avatarCropper style="display: none"
+                            (afterCropped)="updateAvatar($event)"></app-avatar-cropper>
+        <a (click)="avatarCropper.selectFile()" style="display: block">
+          <ngx-avatar [src]="currentGroup?.avatar" [bgColor]="'#6692ff'" [fgColor]="'white'" [textSizeRatio]="2"
+                      class="avatar" [size]="140"></ngx-avatar>
+        </a>
+      </div>
+      <span class="name">
+        <app-inline-edit [text]="currentGroup?.name" [saveCallbackFuc]="updateName"></app-inline-edit>
+      </span>
+      <div class="operations">
+        <button mat-button *ngIf="hasGroup(currentGroup)" class="btn btn-primary">发起聊天</button>
+        <button mat-button *ngIf="hasGroup(currentGroup)" (click)="showLeaveConfirmDialog()" class="btn btn-danger">
+          退出群组
+        </button>
+        <button mat-button *ngIf="!hasGroup(currentGroup)" (click)="joinGroup(currentGroup.id)" class="btn btn-primary">
+          加入群组
+        </button>
+      </div>
+    </ng-container>
+  </section>
+</div>
+
+<ng-template #itemList let-groups="groups">
+  <div class="content pointer" *ngFor="let group of groups"
+       (click)="setCurrentGroup(group)"
+       [class.active]="currentGroup.id === group.id">
+    <ngx-avatar [src]="group?.avatar" [bgColor]="'#6692ff'" [fgColor]="'white'" [textSizeRatio]="2"
+                class="avatar" [size]="50"></ngx-avatar>
+    <div class="item-detail">
+      <span class="name">{{group.name}}</span>
+      <span class="last-message">test</span>
+    </div>
+  </div>
+</ng-template>

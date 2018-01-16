@@ -3,15 +3,8 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {
-  MatButtonModule,
-  MatCheckboxModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatIconRegistry,
-  MatInputModule,
-  MatProgressSpinnerModule,
-  MatSnackBarModule
+  MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatIconRegistry,
+  MatInputModule, MatListModule, MatMenuModule, MatProgressSpinnerModule, MatSnackBarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
@@ -19,7 +12,7 @@ import {TokenService} from './token.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {AvatarModule} from 'ngx-avatar';
 import {ContactsService} from './contacts.service';
-import {RoomsService} from './rooms.service';
+import {GroupsService} from './groups.service';
 import {FriendsService} from './friends.service';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {UserService} from './user.service';
@@ -48,6 +41,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatDialogModule,
     ClickOutsideModule,
     FormsModule,
+    MatListModule,
+    MatMenuModule
   ],
   exports: [
     MatCheckboxModule,
@@ -67,6 +62,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatDialogModule,
     ClickOutsideModule,
     FormsModule,
+    MatListModule,
+    MatMenuModule
   ],
   providers: [
     TokenService,
@@ -76,7 +73,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
     ContactsService,
-    RoomsService,
+    GroupsService,
     FriendsService,
     FileUploadService,
     NotificationService

@@ -86,7 +86,7 @@ export class FriendsContentComponent implements OnInit, OnDestroy {
     return this.filterString !== '';
   }
 
-  searchUser() {
+  searchUsers() {
     this.userService.search(this.filterString).subscribe((users) => {
       const friendIds: number[] = [];
       _.forEach(this.friends, (friend) => friendIds.push(friend.id));

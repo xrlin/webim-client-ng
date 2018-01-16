@@ -5,8 +5,8 @@
       <img src="https://xrlin.github.io/assets/img/background.jpg" id="avatar-cropper-source">
     </div>
   </div>
-  <div class="footer">
-    <button (click)="upload()" [disabled]="uploading">Submit</button>
-    <button mat-dialog-close [disabled]="uploading">Close</button>
+  <div mat-dialog-actions class="footer">
+    <button mat-raised-button (click)="cropped()" mat-dialog-close="true" class="btn btn-primary">Submit</button>
+    <button mat-raised-button mat-dialog-close class="btn btn-default">Close</button>
   </div>
 </div>

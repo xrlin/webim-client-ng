@@ -1,6 +1,6 @@
 <div class="setting-wrapper">
   <div class="avatar-wrapper">
-    <app-avatar-cropper #avatarCropper style="display: none"></app-avatar-cropper>
+    <app-avatar-cropper #avatarCropper style="display: none" (afterCropped)="updateAvatar($event)"></app-avatar-cropper>
     <a (click)="avatarCropper.selectFile()" style="display: block">
       <ngx-avatar [name]="user?.name" [src]="user?.avatar" [bgColor]="'#6692ff'" [fgColor]="'white'" [textSizeRatio]="2"
                   class="avatar" [size]="200"></ngx-avatar>

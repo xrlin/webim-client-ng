@@ -3,51 +3,41 @@
     <div class="search-box-wrapper">
       <app-search-box (searchEvent)="filterFriends($event)"></app-search-box>
     </div>
-    <ng-container *ngIf="!onFilter(); else filteredFriendList">
-      <div class="content pointer" *ngFor="let friend of friends"
-           (click)="setCurrentFriend(friend)"
-           [class.active]="currentFriend.id === friend.id">
-        <app-user-avatar [user]="friend"></app-user-avatar>
-        <div class="item-detail">
-          <span class="name">{{friend.name}}</span>
-          <span class="last-message">test</span>
-        </div>
-      </div>
+    <ng-container *ngTemplateOutlet="itemList; context: { friends: friends }"></ng-container>
+    <ng-container *ngIf="onFilter()">
+      <a (click)="searchUsers()">查找更多...</a>
+      <ng-container *ngTemplateOutlet="itemList; context: { friends: moreUsers }"></ng-container>
     </ng-container>
-    <ng-template #filteredFriendList>
-      <div class="content pointer" *ngFor="let friend of filteredFriends"
-           (click)="setCurrentFriend(friend)"
-           [class.active]="currentFriend.id === friend.id">
-        <app-user-avatar [user]="friend"></app-user-avatar>
-        <div class="item-detail">
-          <span class="name">{{friend.name}}</span>
-          <span class="last-message">test</span>
-        </div>
-      </div>
-      <a (click)="searchUser()">查找更多...</a>
-      <div class="content pointer" *ngFor="let user of moreUsers"
-           (click)="setCurrentFriend(user)"
-           [class.active]="currentFriend.id === user.id">
-        <app-user-avatar [user]="user"></app-user-avatar>
-        <div class="item-detail">
-          <span class="name">{{user.name}}</span>
-        </div>
-      </div>
-    </ng-template>
   </div>
   <section class="detail-panel">
     <ng-container *ngIf="hasCurrentFriend()">
       <div class="avatar-wrapper">
         <ngx-avatar [name]="currentFriend.name" [src]="currentFriend.avatar" [bgColor]="'#6692ff'" [fgColor]="'white'"
                     [textSizeRatio]="2"
-                    class="avatar" [size]="150"></ngx-avatar>
+                    class="avatar" [size]="140"></ngx-avatar>
       </div>
-      <span>{{currentFriend.name}}</span>
+      <span class="name">{{currentFriend.name}}</span>
       <div class="operations">
-        <button mat-button *ngIf="hasFriendship(currentFriend)">发起聊天</button>
-        <button mat-button *ngIf="hasFriendship(currentFriend)" (click)="showDeleteConfirmDialog()">删除好友</button>
-        <button mat-button *ngIf="!hasFriendship(currentFriend)" (click)="addFriend(currentFriend.id)">添加好友</button>
+        <button mat-button *ngIf="hasFriendship(currentFriend)" class="btn btn-primary">发起聊天</button>
+        <button mat-button *ngIf="hasFriendship(currentFriend)" (click)="showDeleteConfirmDialog()"
+                class="btn btn-danger">删除好友
+        </button>
+        <button mat-button *ngIf="!hasFriendship(currentFriend)" (click)="addFriend(currentFriend.id)"
+                class="btn btn-primary">添加好友
+        </button>
       </div>
     </ng-container>
   </section>
 </div>
+
+<ng-template #itemList let-friends="friends">
+  <div class="content pointer" *ngFor="let friend of friends"
+       (click)="setCurrentFriend(friend)"
+       [class.active]="currentFriend.id === friend.id">
+    <app-user-avatar [user]="friend" [bgColor]="'#6692ff'" [fgColor]="'white'"></app-user-avatar>
+    <div class="item-detail">
+      <span class="name">{{friend.name}}</span>
+      <span class="last-message">test</span>
+    </div>
+  </div>
+</ng-template>

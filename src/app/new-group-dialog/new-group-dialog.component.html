@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Create group</h2>
+<div mat-dialog-content>
+  <form [formGroup]="form" novalidate class="flex-container">
+    <app-avatar-cropper #avatarCropper style="display: none"
+                        (afterCropped)="setAvatarBlog($event)"></app-avatar-cropper>
+    <a (click)="avatarCropper.selectFile()" style="display: block">
+      <ngx-avatar [src]="sanitize(avatarLink)" [bgColor]="'#6692ff'" [fgColor]="'white'" [textSizeRatio]="2"
+                  class="avatar" [size]="140"></ngx-avatar>
+    </a>
+    <input matInput formControlName="avatar" [hidden]="true">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="type in the group name">
+    </mat-form-field>
+    <div mat-dialog-actions styles="footer">
+      <button mat-raised-button type="submit" (click)="submit()" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

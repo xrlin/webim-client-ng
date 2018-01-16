@@ -14,13 +14,15 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './interceptor/auth.interceptor';
 import {ApiConfig} from './config/api.config';
 import {MenuContentDirective} from './shared/menu-content.directive';
-import {RoomContentComponent} from './rooms-content/rooms-content.component';
+import {GroupsContentComponent} from './groups-content/groups-content.component';
 import {FriendsContentComponent} from './friends-content/friends-content.component';
 import {AlertDialogComponent} from './alert-dialog/alert-dialog.component';
 import {SettingComponent} from './setting/setting.component';
 import {InlineEditComponent} from './inline-edit/inline-edit.component';
 import {AvatarCropperComponent, AvatarCropperDialogComponent} from './avatar-cropper/avatar-cropper.component';
 import {SearchBoxComponent} from './search-box/search-box.component';
+import {UserSelectorDialogComponent} from './user-selector-dialog/user-selector-dialog.component';
+import {NewGroupDialogComponent} from './new-group-dialog/new-group-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -37,14 +39,16 @@ const appRoutes: Routes = [
     UserAvatarComponent,
     AvatarDetailDialogComponent,
     MenuContentDirective,
-    RoomContentComponent,
+    GroupsContentComponent,
     FriendsContentComponent,
     AlertDialogComponent,
     SettingComponent,
     InlineEditComponent,
     AvatarCropperComponent,
     AvatarCropperDialogComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    UserSelectorDialogComponent,
+    NewGroupDialogComponent
   ],
   imports: [
     BrowserModule, CoreModule,
@@ -52,11 +56,13 @@ const appRoutes: Routes = [
   ],
   entryComponents: [
     AvatarDetailDialogComponent,
-    RoomContentComponent,
+    GroupsContentComponent,
     FriendsContentComponent,
     AlertDialogComponent,
     SettingComponent,
-    AvatarCropperDialogComponent
+    AvatarCropperDialogComponent,
+    UserSelectorDialogComponent,
+    NewGroupDialogComponent
   ],
   providers: [AuthGuard,
     {

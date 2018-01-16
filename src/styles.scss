@@ -52,7 +52,7 @@ body {
     box-sizing: border-box;
     height: 8em;
     width: 100%;
-    color: rgb(174, 170, 180);
+    color: rgba(0, 0, 0, .54);
     padding: 1em .5em;
     border-top: 1px solid rgb(226, 226, 228);
     .title {
@@ -70,4 +70,21 @@ body {
   & > * {
     width: 100%;
   }
+}
+
+.btn {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+  color: inherit;
+}
+
+.btn-primary {
+  color: white !important;
+  background-color: #4977f0;
+}
+
+.btn-danger {
+  color: white !important;
+  background-color: #ff4081;
 }

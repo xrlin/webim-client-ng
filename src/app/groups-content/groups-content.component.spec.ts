@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {RoomContentComponent} from './rooms-content.component';
+import {GroupsContentComponent} from './groups-content.component';
 
-describe('RoomContentComponent', () => {
-  let component: RoomContentComponent;
-  let fixture: ComponentFixture<RoomContentComponent>;
+describe('GroupsContentComponent', () => {
+  let component: GroupsContentComponent;
+  let fixture: ComponentFixture<GroupsContentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RoomContentComponent]
+      declarations: [GroupsContentComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoomContentComponent);
+    fixture = TestBed.createComponent(GroupsContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

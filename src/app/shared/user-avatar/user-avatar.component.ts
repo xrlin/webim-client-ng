@@ -10,8 +10,12 @@ import {AvatarDetailDialogComponent} from '../../avatar-detail-dialog/avatar-det
 })
 export class UserAvatarComponent implements OnInit {
   @Input() user: User;
+  @Input() bgColor: string;
+  @Input() fgColor: string;
 
   constructor(public dialog: MatDialog) {
+    this.bgColor = this.bgColor || 'white';
+    this.fgColor = this.fgColor || '#6692ff';
   }
 
   ngOnInit() {
