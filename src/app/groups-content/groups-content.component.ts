@@ -10,6 +10,9 @@ import {FriendsService} from '../core/friends.service';
 import {NewGroupDialogComponent} from '../new-group-dialog/new-group-dialog.component';
 import {FileUploadService} from '../core/fileupload.service';
 import {NotificationService} from '../core/notification.service';
+import {ThreadService} from '../core/thread.service';
+import {MenuService} from '../core/menu.service';
+import {Menu} from '../models/menu.model';
 
 @Component({
   selector: 'app-room-content',
@@ -29,7 +32,9 @@ export class GroupsContentComponent implements OnInit, OnDestroy {
               private dialog: MatDialog,
               private friendsService: FriendsService,
               private fileService: FileUploadService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private threadService: ThreadService,
+              private menuService: MenuService) {
   }
 
   ngOnInit() {
@@ -71,6 +76,11 @@ export class GroupsContentComponent implements OnInit, OnDestroy {
     this.groupService.setCurrentGroup(group);
   }
 
+  launchTread() {
+    this.threadService.createThread(this.currentGroup.id, 'group');
+    this.menuService.setCurrentMenu(Menu.messages);
+  }
+
   joinGroup(groupID: number) {
     this.groupService.joinGroup(groupID).subscribe();
   }
@@ -84,7 +94,6 @@ export class GroupsContentComponent implements OnInit, OnDestroy {
     this.moreGroups = [];
     this.groupService.groups.subscribe(
       (groups) => {
-        console.log(groups);
         this.filteredGroups = _.filter(groups, (group) => group.name.includes(name));
       }
     );

@@ -6,6 +6,9 @@ import {UserService} from '../core/user.service';
 import {Subscription} from 'rxjs/Subscription';
 import {MatDialog} from '@angular/material';
 import {AlertDialogComponent} from '../alert-dialog/alert-dialog.component';
+import {ThreadService} from '../core/thread.service';
+import {MenuService} from '../core/menu.service';
+import {Menu} from '../models/menu.model';
 
 @Component({
   selector: 'app-friends-content',
@@ -26,7 +29,8 @@ export class FriendsContentComponent implements OnInit, OnDestroy {
 
   subscriptions = new Subscription();
 
-  constructor(private friendsService: FriendsService, private userService: UserService, private dialog: MatDialog) {
+  constructor(private friendsService: FriendsService, private userService: UserService, private dialog: MatDialog,
+              private threadService: ThreadService, private menuService: MenuService) {
   }
 
   ngOnInit() {
@@ -92,6 +96,12 @@ export class FriendsContentComponent implements OnInit, OnDestroy {
       _.forEach(this.friends, (friend) => friendIds.push(friend.id));
       this.moreUsers = _.reject(users, (user) => friendIds.includes(user.id));
     });
+  }
+
+  launchThread() {
+    const id = this.currentFriend.id;
+    this.threadService.createThread(id, 'p2p');
+    this.menuService.setCurrentMenu(Menu.messages);
   }
 
   ngOnDestroy() {

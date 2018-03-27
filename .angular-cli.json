@@ -23,7 +23,8 @@
         "../node_modules/cropperjs/dist/cropper.css"
       ],
       "scripts": [
-        "../node_modules/cropperjs/dist/cropper.js"
+        "../node_modules/cropperjs/dist/cropper.js",
+        "../node_modules/uuid/index.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

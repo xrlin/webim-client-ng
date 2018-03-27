@@ -18,7 +18,8 @@
       </div>
       <span class="name">{{currentFriend.name}}</span>
       <div class="operations">
-        <button mat-button *ngIf="hasFriendship(currentFriend)" class="btn btn-primary">发起聊天</button>
+        <button mat-button *ngIf="hasFriendship(currentFriend)" class="btn btn-primary" (click)="launchThread()">发起聊天
+        </button>
         <button mat-button *ngIf="hasFriendship(currentFriend)" (click)="showDeleteConfirmDialog()"
                 class="btn btn-danger">删除好友
         </button>

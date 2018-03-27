@@ -8,6 +8,7 @@ import {FileUploadService} from './fileupload.service';
 
 @Injectable()
 export class UserService {
+  profileCache: Map<string, User> = new Map();
   currentUser: Observable<User>;
 
   update = new Subject<any>();
@@ -50,5 +51,16 @@ export class UserService {
 
   search(value: string): Observable<User[]> {
     return this.http.get<{ users: User[] }>(this.api.searchUsersApi(), {params: {name: value}}).map((resp) => resp.users);
+  }
+
+  getProfileById(id: string | number): Observable<User> {
+    // if (this.profileCache.get(id.toString())) {
+    //   return Observable.create(this.profileCache.get(id.toString()));
+    // }
+    return this.http.get(this.api.getUserProfileApi(id)).map((resp) => {
+      const user = new User(resp);
+      this.profileCache.set(id.toString(), user);
+      return user;
+    });
   }
 }

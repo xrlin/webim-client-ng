@@ -35,8 +35,8 @@ export class ApiConfig {
     return `${this.endpoint}/room/${roomID}`;
   }
 
-  groupProfileApi(roomID: number): string {
-    return `${this.endpoint}/rooms/${roomID}`;
+  groupProfileApi(roomID: number | string): string {
+    return `${this.endpoint}/room/${roomID}`;
   }
 
   groupInviteApi(roomID: number): string {
@@ -47,7 +47,10 @@ export class ApiConfig {
     return `${this.endpoint}/friends`;
   }
 
-  getUserProfileApi(): string {
+  getUserProfileApi(id?: string | number): string {
+    if (id) {
+      return `${this.endpoint}/user/info?id=${id}`;
+    }
     return `${this.endpoint}/user/info`;
   }
 
@@ -81,5 +84,9 @@ export class ApiConfig {
 
   searchUsersApi(): string {
     return `${this.endpoint}/users/search`;
+  }
+
+  sendMessageApi(): string {
+    return `${this.endpoint}/message/push`;
   }
 }

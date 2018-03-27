@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="menu-content scrollbar-wrapper" perfectScrollbar>
+    <div class="search-box-wrapper">
+      <app-search-box (searchEvent)="console.log($event)"></app-search-box>
+    </div>
+    <ng-container *ngTemplateOutlet="itemList; context: { threads: threads }"></ng-container>
+  </div>
+  <section class="detail-panel">
+    <div class="message-box" perfectScrollbar>
+      <ng-container *ngFor="let message of messages; trackBy: trackMessage">
+        <app-message [message]="message"></app-message>
+      </ng-container>
+    </div>
+    <div class="message-editor">
+      <app-editor (submit)="send($event)"></app-editor>
+    </div>
+  </section>
+</div>
+
+<ng-template #itemList let-threads="threads">
+  <div class="content pointer" *ngFor="let thread of threads"
+       (click)="setCurrentThread(thread)"
+       [class.active]="currentThread.id === thread.id">
+    <ngx-avatar [name]="thread?.name" [src]="thread?.avatar" [bgColor]="'#6692ff'" [fgColor]="'white'"
+                [textSizeRatio]="2"
+                [size]="50" style="display: inline-block"></ngx-avatar>
+    <div class="item-detail">
+      <span class="name">{{thread?.name}}</span>
+      <span class="last-message">test</span>
+    </div>
+  </div>
+</ng-template>

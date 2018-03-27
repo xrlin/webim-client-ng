@@ -1,0 +1,14 @@
+<div class="message clearfix" [class.me]="currentUser.id === message.from">
+  <div class="avatar">
+    <app-user-avatar [user]="message.user"></app-user-avatar>
+  </div>
+  <div class="content">
+    <div class="mat-elevation-z6 bubble">
+      <div class="bubble_content">
+        <div class="plain">
+          {{message.payload}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -121,4 +121,8 @@ export class GroupsService {
     return groups;
   }
 
+  getGroupProfileById(id: string | number): Observable<Group> {
+    return this.http.get<{ room: Group }>(this.api.groupProfileApi(id)).map((resp) => resp.room);
+  }
+
 }

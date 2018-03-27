@@ -3,8 +3,17 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {
-  MatButtonModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatIconRegistry,
-  MatInputModule, MatListModule, MatMenuModule, MatProgressSpinnerModule, MatSnackBarModule
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatIconRegistry,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
@@ -18,6 +27,10 @@ import {ClickOutsideModule} from 'ng-click-outside';
 import {UserService} from './user.service';
 import {FileUploadService} from './fileupload.service';
 import {NotificationService} from './notification.service';
+import {MenuService} from './menu.service';
+import {MqttService} from './mqtt.service';
+import {ThreadService} from './thread.service';
+import {MessageService} from './message.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -76,7 +89,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     GroupsService,
     FriendsService,
     FileUploadService,
-    NotificationService
+    NotificationService,
+    MenuService,
+    MqttService,
+    MessageService,
+    ThreadService
   ],
   declarations: []
 })

@@ -23,6 +23,9 @@ import {AvatarCropperComponent, AvatarCropperDialogComponent} from './avatar-cro
 import {SearchBoxComponent} from './search-box/search-box.component';
 import {UserSelectorDialogComponent} from './user-selector-dialog/user-selector-dialog.component';
 import {NewGroupDialogComponent} from './new-group-dialog/new-group-dialog.component';
+import {MessagesContentComponent} from './messages-content/messages-content.component';
+import {EditorComponent} from './editor/editor.component';
+import {MessageComponent} from './message/message.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -48,7 +51,10 @@ const appRoutes: Routes = [
     AvatarCropperDialogComponent,
     SearchBoxComponent,
     UserSelectorDialogComponent,
-    NewGroupDialogComponent
+    NewGroupDialogComponent,
+    MessagesContentComponent,
+    EditorComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule, CoreModule,
@@ -62,7 +68,8 @@ const appRoutes: Routes = [
     SettingComponent,
     AvatarCropperDialogComponent,
     UserSelectorDialogComponent,
-    NewGroupDialogComponent
+    NewGroupDialogComponent,
+    MessagesContentComponent
   ],
   providers: [AuthGuard,
     {

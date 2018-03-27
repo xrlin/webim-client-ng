@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ComponentFactoryResolver, OnInit, Type, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, ComponentFactoryResolver, OnDestroy, OnInit, Type, ViewChild} from '@angular/core';
 import {User} from '../models/user.model';
 import {ContactsService} from '../core/contacts.service';
 import {GroupsContentComponent} from '../groups-content/groups-content.component';
@@ -10,46 +10,47 @@ import {TokenService} from '../core/token.service';
 import {SettingComponent} from '../setting/setting.component';
 import {UserService} from '../core/user.service';
 import {Observable} from 'rxjs/Observable';
-
-enum Menu {
-  messages,
-  contacts,
-  groups,
-  reminder,
-  setting,
-  logout
-}
+import {Menu} from '../models/menu.model';
+import {MenuService} from '../core/menu.service';
+import {Subscription} from 'rxjs/Subscription';
+import {MqttService} from '../core/mqtt.service';
+import {MessagesContentComponent} from '../messages-content/messages-content.component';
 
 @Component({
   selector: 'app-chat-window',
   templateUrl: './chat-window.component.html',
   styleUrls: ['./chat-window.component.scss'],
 })
-export class ChatWindowComponent implements AfterContentInit, OnInit {
+export class ChatWindowComponent implements AfterContentInit, OnInit, OnDestroy {
   @ViewChild(MenuContentDirective) menuContent: MenuContentDirective;
   // Just make enum available in view.
-  Menu = Menu;
   users: Array<User>;
+  Menu = Menu;
 
-  currentMenu: Menu = Menu.messages;
+  currentMenu: Menu;
 
   currentUser: Observable<User>;
+  private subscriptions: Subscription = new Subscription();
 
   constructor(private contactsService: ContactsService,
               private componentFactoryResolver: ComponentFactoryResolver,
               private tokenService: TokenService,
               private userService: UserService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private menuService: MenuService,
+              private mqttService: MqttService) {
     this.currentUser = this.userService.currentUser;
-
+    this.subscriptions.add(this.contactsService.contacts.subscribe(users => this.users = users));
   }
 
   ngOnInit() {
-    this.contactsService.contacts.subscribe(users => this.users = users);
   }
 
   ngAfterContentInit() {
-    this.loadComponent();
+    this.subscriptions.add(this.menuService.currentMenu.subscribe((menu) => {
+      this.currentMenu = menu;
+      this.loadComponent();
+    }));
   }
 
   loadComponent() {
@@ -69,11 +70,12 @@ export class ChatWindowComponent implements AfterContentInit, OnInit {
     maps.set(Menu.groups, GroupsContentComponent);
     maps.set(Menu.contacts, FriendsContentComponent);
     maps.set(Menu.setting, SettingComponent);
+    maps.set(Menu.messages, MessagesContentComponent);
     return maps.get(this.currentMenu);
   }
 
   selectMenu(menu: Menu) {
-    this.currentMenu = menu;
+    this.menuService.setCurrentMenu(menu);
     this.loadComponent();
   }
 
@@ -90,6 +92,10 @@ export class ChatWindowComponent implements AfterContentInit, OnInit {
 
   logout() {
     this.tokenService.logout();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
 }

@@ -39,7 +39,7 @@
         <app-inline-edit [text]="currentGroup?.name" [saveCallbackFuc]="updateName"></app-inline-edit>
       </span>
       <div class="operations">
-        <button mat-button *ngIf="hasGroup(currentGroup)" class="btn btn-primary">发起聊天</button>
+        <button mat-button *ngIf="hasGroup(currentGroup)" class="btn btn-primary" (click)="launchTread()">发起聊天</button>
         <button mat-button *ngIf="hasGroup(currentGroup)" (click)="showLeaveConfirmDialog()" class="btn btn-danger">
           退出群组
         </button>
